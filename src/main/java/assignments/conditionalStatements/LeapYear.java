@@ -1,4 +1,4 @@
-package assignments;
+package assignments.conditionalStatements;
 
 public class LeapYear {
     public static void main(String[] args) {

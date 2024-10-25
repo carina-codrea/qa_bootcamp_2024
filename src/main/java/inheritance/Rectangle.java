@@ -1,12 +1,15 @@
+package inheritance;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-
-public class Rectangle {
+@NoArgsConstructor
+public class Rectangle extends Shape {
     private double length;
     private double width;
 

@@ -1,3 +1,6 @@
+import inheritance.Rectangle;
+import inheritance.Square;
+
 public class ObjectsCourse {
     public static void main(String[] args) {
         Car dacia1300 = new Car("RED","Sedan",1300,"dacia 1300", 45);
@@ -18,8 +21,7 @@ public class ObjectsCourse {
         square.printCurrentSquare();
 
         for (String value : args){
-            Square square1 = new Square();
-            square1.setSquareSide(Double.parseDouble(value));
+            Square square1 = new Square(Double.parseDouble(value));
             square1.printCurrentSquare();
 
         }

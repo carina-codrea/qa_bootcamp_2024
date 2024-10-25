@@ -1,4 +1,4 @@
-package assignments;
+package assignments.library;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,10 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Book {
+public class Author {
     private String name;
-    private int year;
-    private Author author;
-    private double price;
+    private String email;
 
 }

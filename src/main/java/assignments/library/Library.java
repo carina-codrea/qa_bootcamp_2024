@@ -1,4 +1,7 @@
-package assignments;
+package assignments.library;
+
+import assignments.library.Author;
+import assignments.library.Book;
 
 public class Library {
     public static void main(String[] args) {
