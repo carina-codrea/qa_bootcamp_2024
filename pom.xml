@@ -14,6 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junitVersion>5.11.2</junitVersion>
         <lombokVersion>1.18.34</lombokVersion>
+        <seleniumVersion>4.25.0</seleniumVersion>
+        <mavenSurefirePluginVersion>3.5.0</mavenSurefirePluginVersion>
+        <testNGVersion>7.10.2</testNGVersion>
+        <htmlUnitVersion>4.13.0</htmlUnitVersion>
+        <jacksonDataBindVersion>2.16.1</jacksonDataBindVersion>
     </properties>
 
     <dependencies>
@@ -31,6 +36,44 @@
             <version>${lombokVersion}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${seleniumVersion}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testNGVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${mavenSurefirePluginVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/htmlunit-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>htmlunit-driver</artifactId>
+            <version>${htmlUnitVersion}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jacksonDataBindVersion}</version>
+        </dependency>
+
+
+
+
     </dependencies>
 
 </project>

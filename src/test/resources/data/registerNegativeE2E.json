@@ -1,0 +1,63 @@
+[
+  {
+    "testName": "invalidEmailNoAtSymbol",
+    "email": "carina.com",
+    "validationMessage": "Email address is not valid."
+  },
+  {
+    "testName": "invalidEmailNoPrefix",
+    "email": "@yahoo.com",
+    "validationMessage": "Email address is not valid."
+  },
+  {
+    "testName": "invalidEmailNoDomain",
+    "email": "woof@",
+    "validationMessage": "Email address is not valid."
+  },
+  {
+    "testName": "invalidEmailNoDomainSuffix",
+    "email": "woof@yahoo",
+    "validationMessage": "Email address is not valid."
+  },
+  {
+    "testName": "invalidEmailWithSpaces",
+    "email": "woof @yahoo.com",
+    "validationMessage": "Email address is not valid."
+  },
+  {
+    "testName": "invalidEmailEmpty",
+    "email": "",
+    "validationMessage": "Please provide an email address."
+  },
+  {
+    "testName": "shortPassword",
+    "password": "123",
+    "validationMessage": "Password must be 5-40 characters long."
+  },
+  {
+    "testName": "longPassword",
+    "password": "asdkaskdmaskdadasfas2312412412412409876545re",
+    "validationMessage": "Password must be 5-40 characters long."
+  },
+  {
+    "testName": "emptyPassword",
+    "password": "",
+    "validationMessage": "Please provide a password."
+  },
+  {
+    "testName": "noMatchingPasswords",
+    "password": "randomPass123",
+    "repeatPassword": "anotherRandomPass",
+    "validationMessage": "Passwords do not match"
+  },
+  {
+    "testName": "emptyRepeatPassword",
+    "repeatPassword": "",
+    "validationMessage": "Please repeat your password."
+  },
+  {
+    "testName": "emptySecurityAnswer",
+    "securityAnswer": "",
+    "validationMessage": "Please provide an answer to your security question."
+  }
+]
