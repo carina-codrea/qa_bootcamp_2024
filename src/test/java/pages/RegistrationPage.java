@@ -69,13 +69,12 @@ public class RegistrationPage extends BasePage {
         return REGISTER_HEADER_TEXT;
     }
 
-    public void register(String email, String password, String securityAnswer) throws InterruptedException {
+    public void register(String email, String password, String securityAnswer) {
         enterEmail(email);
         enterPassword(password);
         enterRepeatPassword(password);
         clickOnSecurityQuestionDropdown();
         selectFirstSecurityQuestion();
-        Thread.sleep(3000);
         enterSecurityAnswer(securityAnswer);
         clickOnRegisterBtn();
     }
