@@ -30,6 +30,7 @@ public class RegisterTest extends BaseTest {
         Assert.assertEquals(registrationPage.getRegisterHeaderText(),registrationPage.getRegisterStaticHeaderText());
         registrationPage.register(inputData.get("email"),inputData.get("password"),inputData.get("securityAnswer"));
 
+
     }
 
 

@@ -52,6 +52,7 @@ public class RegistrationPage extends BasePage {
     public void enterSecurityAnswer(String securityAnswer) {
         TestUtils.waitElementToBeInvisible(driver, Duration.ofSeconds(5), CHANGE_LANGUAGE_BLOCKER);
         WebElement securityAnswerField = getElement(SECURITY_ANSWER_FIELD);
+        TestUtils.scroll(driver,securityAnswerField);
         clearInputField(securityAnswerField);
         securityAnswerField.sendKeys(securityAnswer);
     }
@@ -68,12 +69,13 @@ public class RegistrationPage extends BasePage {
         return REGISTER_HEADER_TEXT;
     }
 
-    public void register(String email, String password, String securityAnswer) {
+    public void register(String email, String password, String securityAnswer) throws InterruptedException {
         enterEmail(email);
         enterPassword(password);
         enterRepeatPassword(password);
         clickOnSecurityQuestionDropdown();
         selectFirstSecurityQuestion();
+        Thread.sleep(3000);
         enterSecurityAnswer(securityAnswer);
         clickOnRegisterBtn();
     }
