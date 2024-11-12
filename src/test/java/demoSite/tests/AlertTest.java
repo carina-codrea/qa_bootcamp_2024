@@ -1,4 +1,4 @@
-package demoSite;
+package demoSite.tests;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;

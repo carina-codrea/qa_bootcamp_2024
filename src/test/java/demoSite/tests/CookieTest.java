@@ -1,4 +1,4 @@
-package tests;
+package demoSite.tests;
 
 import frameworkUtils.TestUtils;
 import org.openqa.selenium.Cookie;

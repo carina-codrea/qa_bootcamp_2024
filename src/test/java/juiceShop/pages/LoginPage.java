@@ -1,15 +1,8 @@
-package pages;
+package juiceShop.pages;
 
-import frameworkUtils.TestUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.asserts.SoftAssert;
-
-import java.time.Duration;
-
-import static frameworkUtils.Selectors.MODAL_OK_BUTTON;
-import static frameworkUtils.TestUtils.waitElementToBeClickable;
 
 public class LoginPage extends BasePage {
 

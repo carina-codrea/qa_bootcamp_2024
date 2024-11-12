@@ -1,12 +1,9 @@
-package pages;
+package juiceShop.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.time.Duration;
-
-import static frameworkUtils.Selectors.MODAL_OK_BUTTON;
 import static frameworkUtils.TestUtils.waitElementToBeClickable;
 
 public class BasePage {

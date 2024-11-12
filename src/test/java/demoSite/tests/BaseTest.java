@@ -1,4 +1,4 @@
-package demoSite;
+package demoSite.tests;
 
 import frameworkUtils.TestUtils;
 import org.openqa.selenium.WebDriver;

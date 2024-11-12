@@ -79,7 +79,7 @@ public class TestUtils {
 
             }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
 
         return driver;
 

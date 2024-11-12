@@ -1,13 +1,13 @@
-package tests;
+package juiceShop.tests;
 
+import juiceShop.pages.LoginPage;
+import juiceShop.pages.MainPage;
+import juiceShop.pages.RegistrationPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.RegistrationPage;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;

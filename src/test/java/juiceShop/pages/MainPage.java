@@ -1,11 +1,12 @@
-package pages;
+package juiceShop.pages;
 
+import juiceShop.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage extends BasePage{
+public class MainPage extends BasePage {
     @FindBy(css = "body > app-root > div > mat-sidenav-container > mat-sidenav-content > app-search-result > div > div > div.heading.mat-elevation-z6 > div.ng-star-inserted")
     private WebElement allProducts;
     @FindBy(id = "navbarAccount")
