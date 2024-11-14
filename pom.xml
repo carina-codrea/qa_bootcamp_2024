@@ -19,6 +19,10 @@
         <testNGVersion>7.10.2</testNGVersion>
         <htmlUnitVersion>4.13.0</htmlUnitVersion>
         <jacksonDataBindVersion>2.16.1</jacksonDataBindVersion>
+        <restAssuredVersion>5.5.0</restAssuredVersion>
+        <hamcrestVersion>3.0</hamcrestVersion>
+        <jsonVersion>20240303</jsonVersion>
+        <gsonVersion>2.11.0</gsonVersion>
     </properties>
 
     <dependencies>
@@ -64,16 +68,38 @@
             <artifactId>htmlunit-driver</artifactId>
             <version>${htmlUnitVersion}</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jacksonDataBindVersion}</version>
         </dependency>
-
-
-
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restAssuredVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrestVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${jsonVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gsonVersion}</version>
+        </dependency>
 
     </dependencies>
+
+
 
 </project>

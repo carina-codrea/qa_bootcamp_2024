@@ -1,37 +1,35 @@
 package demoSite.tests;
 
+import frameworkUtils.TestUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class AlertTest extends BaseTest {
 
     @Test
     public void openAlertConfirmTest() {
-        driver.get(BASE_URL);
-        driver.findElement(By.cssSelector("#svelte > div.container-fluid > div.main.row > div.sidebar > a:nth-child(1)")).click();
-        driver.findElement(By.id("alert-trigger")).click();
-
+        homePage.goToAlerts();
+        TestUtils.waitElementToBeVisible(driver,Duration.ofSeconds(5),By.id("alert-trigger")).click();
         driver.switchTo().alert().accept();
 
     }
     @Test
     public void openConfirmationDialogTest() {
-        driver.get(BASE_URL);
-        driver.findElement(By.cssSelector("#svelte > div.container-fluid > div.main.row > div.sidebar > a:nth-child(1)")).click();
-        driver.findElement(By.id("confirm-trigger")).click();
-
-        driver.switchTo().alert().accept();
-
+        homePage.goToAlerts();
+        TestUtils.waitElementToBeVisible(driver, Duration.ofSeconds(5),By.id("confirm-trigger")).click();
+        driver.switchTo().alert().dismiss();
 
     }
 
     @Test
     public void openPromptDialogTest() throws InterruptedException {
-        driver.get(BASE_URL);
-        driver.findElement(By.cssSelector("#svelte > div.container-fluid > div.main.row > div.sidebar > a:nth-child(1)")).click();
-        driver.findElement(By.id("prompt-trigger")).click();
+        homePage.goToAlerts();
+        TestUtils.waitElementToBeVisible(driver,Duration.ofSeconds(5),By.id("prompt-trigger")).click();
 
         Alert alert = driver.switchTo().alert();
         alert.sendKeys("Carina");
@@ -42,10 +40,10 @@ public class AlertTest extends BaseTest {
     @Test
     public void hoverTest() {
         driver.get(BASE_URL);
-        driver.findElement(By.cssSelector("#svelte > div.container-fluid > div.main.row > div.sidebar > a:nth-child(3)")).click();
-
+        driver.findElement(By.cssSelector("a[href='/hover']")).click();
+        WebElement hoverBtn = TestUtils.waitElementToBeVisible(driver,Duration.ofSeconds(5),By.cssSelector("#svelte > div.container-fluid > div.main.row > div.content > div > button"));
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(By.cssSelector("#svelte > div.container-fluid > div.main.row > div.content > div > button")));
+        actions.moveToElement(hoverBtn);
         actions.perform();
 
     }

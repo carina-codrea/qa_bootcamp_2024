@@ -2,7 +2,6 @@ package frameworkUtils;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.sourceforge.htmlunit.xpath.operations.Bool;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,6 +11,7 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
@@ -91,16 +91,39 @@ public class TestUtils {
 
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+    public static WebElement waitElementToBeClickable(WebDriver driver, Duration duration, WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,duration);
 
-    public static WebElement waitForElementToBeVisible(WebDriver driver,Duration duration,By locator){
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static WebElement waitElementToBeVisible(WebDriver driver, Duration duration, By locator){
         WebDriverWait wait = new WebDriverWait(driver,duration);
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
+    public static WebElement waitElementToBeVisible(WebDriver driver, Duration duration, WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,duration);
+        return wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
 
     public static void waitElementToBeInvisible(WebDriver driver,Duration duration,By locator){
         WebDriverWait wait = new WebDriverWait(driver,duration);
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
+
+    public static void waitElementToBePresent(WebDriver driver,Duration duration,WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,duration);
+
+    }
+
+    public static void jsClick(WebDriver driver,WebElement element){
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].click();",element);
+    }
+
+
 
     public static String getConfigProperty(String propertyName){
         Properties properties = new Properties();
@@ -130,19 +153,50 @@ public class TestUtils {
         return data;
     }
 
+    public static Object getJsonDataToMap(String filePath, String key) {
+        Map<String, Object> data;
+        try {
+            String jsonFile = FileUtils.readFileToString(new File(System.getProperty("user.dir") + "//src//test//resources//data//" + filePath));
+            ObjectMapper objectMapper = new ObjectMapper();
+            data = objectMapper.readValue(jsonFile, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return data.get(key);
+    }
+
+
+    public static Object[][] convertListToDataProvider(List<HashMap<String, Object>> hashMapList) {
+        Object[][] data = new Object[hashMapList.size()][1];
+
+        for (int i = 0; i < hashMapList.size(); i++) {
+            data[i][0] = hashMapList.get(i);
+        }
+        return data;
+    }
+
+
+
     public static String getValidationMessage(WebDriver driver,String inputId){
-         WebElement validationElement = waitForElementToBeVisible(driver,Duration.ofSeconds(5),By.xpath("//div/input[@id='" +  inputId + "']/parent::div[1]/parent::div[1]/following-sibling::div"));
+         WebElement validationElement = waitElementToBeVisible(driver,Duration.ofSeconds(5),By.xpath("//div/input[@id='" +  inputId + "']/parent::div[1]/parent::div[1]/following-sibling::div"));
          return validationElement.getText();
     }
 
     public static void scroll(WebDriver driver,WebElement element){
         JavascriptExecutor jsExe = (JavascriptExecutor) driver;
-        jsExe.executeScript("arguments[0].scrollIntoView(true);",element);
+        jsExe.executeScript("arguments[0].scrollIntoView(false);",element);
     }
 
     public static void scroll(WebDriver driver,int x, int y){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(" + x + "," + y + ");");
+    }
+
+    public static void moveToElement(WebDriver driver,WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
     }
 
     public static void printCookies(WebDriver driver){
@@ -151,6 +205,10 @@ public class TestUtils {
         for (Cookie cookie : cookies){
             System.out.println(cookie.toJson());
         }
+    }
+
+    public static void contextClick(WebDriver driver){
+        driver.findElement(By.tagName("body")).click();
     }
 
 

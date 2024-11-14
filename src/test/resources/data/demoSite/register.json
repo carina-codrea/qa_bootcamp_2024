@@ -1,0 +1,85 @@
+{
+  "registerWithRequiredFields": {
+    "username": "doggo23",
+    "password": "validPassword123"
+  },
+  "registerWithAllFields": {
+    "username": "sofiluna05",
+    "password": "woofwoof09",
+    "gender": "FEMALE",
+    "firstName": "Sofia",
+    "lastName": "Labradorescu",
+    "email": "sofia@example.com",
+    "nationality": "Romania",
+    "dateOfBirth": "05-09-2020"
+  },
+  "negativeTests": [
+    {
+      "testCase": "BlankUsername",
+      "username": "",
+      "validationMessage": "Please choose a username"
+    },
+    {
+      "testCase": "UsernameTooShort",
+      "username": "dog",
+      "validationMessage": "Please choose a longer username"
+    },
+    {
+      "testCase": "UsernameTooLong",
+      "username": "abcdefghijABCDEFGHIJ1234567890abcdXYZ",
+      "validationMessage": "Please choose a shorter username"
+    },
+    {
+      "testCase": "UsernameWithInvalidCharacters",
+      "username": "user#$_@#34",
+      "validationMessage": "Please choose a username which has letters,numbers or underscore"
+    },
+    {
+      "testCase": "PasswordTooShort",
+      "password": "pass.12",
+      "validationMessage": "Please choose a longer password"
+    },
+    {
+      "testCase": "BlankPassword",
+      "password": "",
+      "validationMessage": "Please choose a password"
+    },
+
+    {
+      "testCase": "NotMatchingPasswords",
+      "password": "abraca",
+      "confirmPassword": "abracadrabra2",
+      "validationMessage": "Passwords do not match"
+    },
+    {
+      "testCase": "FirstNameTooShort",
+      "firstname": "A",
+      "validationMessage": "Please choose a longer first name"
+    },
+    {
+      "testCase": "FirstNameTooLong",
+      "firstname": "Christopher-AlexanderJonathanMichael",
+      "validationMessage": "Please choose a shorter first name"
+    },
+    {
+      "testCase": "FirstNameWithInvalidCharacters",
+      "firstname": "John_Doe#02",
+      "validationMessage": "Please choose a first name which has 2 to 35 letters and '-' only."
+    },
+    {
+      "testCase": "LastNameTooShort",
+      "lastName": "A",
+      "validationMessage": "Please choose a longer last name"
+    },
+    {
+      "testCase": "LastNameTooLong",
+      "lastName": "Christopher-AlexanderJonathanMichaelDavid",
+      "validationMessage": "Please choose a shorter last name"
+    },
+    {
+      "testCase": "LastNameWithInvalidCharacters",
+      "firstname": "Ciupacabra24@",
+      "validationMessage": "Please choose a last name which has 2 to 35 letters and '-' only."
+    }
+  ]
+}
