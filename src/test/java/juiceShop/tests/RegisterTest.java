@@ -79,7 +79,7 @@ public class RegisterTest extends BaseTest {
         //click on neutral element to trigger validation
         driver.findElement(By.tagName("h1")).click();
 
-        String testName = inputData.get("testName");
+        String testName = inputData.get("testCase");
         String expectedValidationMessage = inputData.get("validationMessage");
         System.out.println("Validation message:" + expectedValidationMessage);
 
@@ -166,7 +166,7 @@ public class RegisterTest extends BaseTest {
 
     @DataProvider
     public Object[][] loginRegisterProvider(){
-        List<HashMap<String,Object>> hashMapList = getJsonDataToMap("loginRegister.json");
+        List<HashMap<String,Object>> hashMapList = getJsonDataToMap("juiceShop/loginRegister.json");
         Object[][] data = new Object[hashMapList.size()][];
 
         for (int i = 0; i <hashMapList.size() ; i++) {
@@ -180,7 +180,7 @@ public class RegisterTest extends BaseTest {
     @DataProvider
     public Object[][] registerNegativeProvider(){
 
-        List<HashMap<String,Object>> hashMapList = getJsonDataToMap("registerNegativeE2E.json");
+        List<HashMap<String,Object>> hashMapList = getJsonDataToMap("juiceShop/registerNegativeE2E.json");
         Object[][] data = new Object[hashMapList.size()][];
 
         for (int i = 0; i <hashMapList.size() ; i++) {

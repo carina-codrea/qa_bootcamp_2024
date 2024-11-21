@@ -12,20 +12,29 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <apacheCommonsIOVersion>2.14.0</apacheCommonsIOVersion>
         <junitVersion>5.11.2</junitVersion>
         <lombokVersion>1.18.34</lombokVersion>
         <seleniumVersion>4.25.0</seleniumVersion>
-        <mavenSurefirePluginVersion>3.5.0</mavenSurefirePluginVersion>
+        <surefireVersion>3.5.0</surefireVersion>
         <testNGVersion>7.10.2</testNGVersion>
-        <htmlUnitVersion>4.13.0</htmlUnitVersion>
         <jacksonDataBindVersion>2.16.1</jacksonDataBindVersion>
         <restAssuredVersion>5.5.0</restAssuredVersion>
         <hamcrestVersion>3.0</hamcrestVersion>
         <jsonVersion>20240303</jsonVersion>
         <gsonVersion>2.11.0</gsonVersion>
+        <suiteFile>testSuites/petStoreSuite.xml</suiteFile>
+        <surefireRunnerVersion>3.5.2</surefireRunnerVersion>
+        <extentReportsVersion>5.1.2</extentReportsVersion>
+
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${apacheCommonsIOVersion}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -40,7 +49,6 @@
             <version>${lombokVersion}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -54,19 +62,6 @@
             <artifactId>testng</artifactId>
             <version>${testNGVersion}</version>
             <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${mavenSurefirePluginVersion}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/htmlunit-driver -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>htmlunit-driver</artifactId>
-            <version>${htmlUnitVersion}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -97,9 +92,39 @@
             <artifactId>gson</artifactId>
             <version>${gsonVersion}</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentReportsVersion}</version>
+        </dependency>
     </dependencies>
 
-
-
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${surefireVersion}</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                        </suiteXmlFiles>
+                        <properties>
+                            <name>listener</name>
+                            <value>customReporting.CustomTestListener, customReporting.CustomTestReporter</value>
+                        </properties>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-testng</artifactId>
+                            <version>${surefireRunnerVersion}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
