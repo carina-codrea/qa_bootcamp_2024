@@ -1,6 +1,11 @@
 package petStore.utils;
 
+import com.google.gson.Gson;
+
 import java.io.*;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Utils {
@@ -31,5 +36,22 @@ public class Utils {
             e.printStackTrace();
         }
         return deserializeObject;
+    }
+
+    public static String getCurrentDateTimeInFormat() {
+        return DateTimeFormatter
+                .ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+                .withZone(ZoneOffset.UTC)
+                .format(Instant.now());
+    }
+
+    public static String convertObjectToJson(Object object) {
+        Gson gson = new Gson();
+        return gson.toJson(object);
+    }
+
+    public static <T> T convertJsonToObject(String json, Class<T> clazz) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, clazz);
     }
 }
