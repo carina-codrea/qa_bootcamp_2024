@@ -25,60 +25,59 @@ public class TestUtils {
     public static WebDriver getDriver(){
         WebDriver driver;
 
-            String browser = getConfigProperty("browser").toLowerCase();
+        String browser = getConfigProperty("browser").toLowerCase();
 
         Proxy proxy = new Proxy();
         proxy.setHttpProxy("127.0.0.1:6969");
 
-            switch (browser) {
-                case "firefox" -> {
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    FirefoxProfile firefoxProfile = new FirefoxProfile();
-                    if (Boolean.parseBoolean(getConfigProperty("headless"))){
-                        firefoxOptions.addArguments("--headless");
-
-                    }
-                    firefoxOptions.setProfile(firefoxProfile);
-                    firefoxProfile.setPreference("browser.download.dir",".");
-
-                    if (Boolean.parseBoolean(getConfigProperty("maximized"))){
-                        firefoxOptions.addArguments("--start-maximized");
-                    }
-                    driver = new FirefoxDriver(firefoxOptions);
-                }
-                case "edge" ->{
-                    EdgeOptions edgeOptions = new EdgeOptions();
-                    if (Boolean.parseBoolean(getConfigProperty("headless"))){
-                        edgeOptions.addArguments("--headless");
-
-                    }
-                    if (Boolean.parseBoolean(getConfigProperty("maximized"))){
-                        edgeOptions.addArguments("--start-maximized");
-                    }
-
-                    driver = new EdgeDriver(edgeOptions);
+        switch (browser) {
+            case "firefox" :
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                FirefoxProfile firefoxProfile = new FirefoxProfile();
+                if (Boolean.parseBoolean(getConfigProperty("headless"))){
+                    firefoxOptions.addArguments("--headless");
 
                 }
-                default -> {
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    //chromeOptions.setCapability("proxy",proxy);
+                firefoxOptions.setProfile(firefoxProfile);
+                firefoxProfile.setPreference("browser.download.dir",".");
 
-                    if (Boolean.parseBoolean(getConfigProperty("headless"))){
-                        chromeOptions.addArguments("--headless");
+                if (Boolean.parseBoolean(getConfigProperty("maximized"))){
+                    firefoxOptions.addArguments("--start-maximized");
+                }
+                driver = new FirefoxDriver(firefoxOptions);
+                break;
 
-                    }
-                    if (Boolean.parseBoolean(getConfigProperty("maximized"))){
-                        chromeOptions.addArguments("--start-maximized");
-                    }
+            case "edge":
+                EdgeOptions edgeOptions = new EdgeOptions();
+                if (Boolean.parseBoolean(getConfigProperty("headless"))){
+                    edgeOptions.addArguments("--headless");
+
+                }
+                if (Boolean.parseBoolean(getConfigProperty("maximized"))){
+                    edgeOptions.addArguments("--start-maximized");
+                }
+
+                driver = new EdgeDriver(edgeOptions);
+                break;
+
+
+            default:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                //chromeOptions.setCapability("proxy",proxy);
+
+                if (Boolean.parseBoolean(getConfigProperty("headless"))){
+                    chromeOptions.addArguments("--headless");
+
+                }
+                if (Boolean.parseBoolean(getConfigProperty("maximized"))){
+                    chromeOptions.addArguments("--start-maximized");
+                }
 
 //                  Map<String,Object> prefs = new HashMap<>();
 //                  prefs.put("prefs",prefs);
 
-                    driver = new ChromeDriver(chromeOptions);
-                }
-
-            }
-
+                driver = new ChromeDriver(chromeOptions);
+        }
 
 
         return driver;
@@ -180,8 +179,8 @@ public class TestUtils {
 
 
     public static String getValidationMessage(WebDriver driver,String inputId){
-         WebElement validationElement = waitElementToBeVisible(driver,Duration.ofSeconds(5),By.xpath("//div/input[@id='" +  inputId + "']/parent::div[1]/parent::div[1]/following-sibling::div"));
-         return validationElement.getText();
+        WebElement validationElement = waitElementToBeVisible(driver,Duration.ofSeconds(5),By.xpath("//div/input[@id='" +  inputId + "']/parent::div[1]/parent::div[1]/following-sibling::div"));
+        return validationElement.getText();
     }
 
     public static void scroll(WebDriver driver,WebElement element){

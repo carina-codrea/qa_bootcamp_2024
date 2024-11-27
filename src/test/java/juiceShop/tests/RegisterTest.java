@@ -79,26 +79,31 @@ public class RegisterTest extends BaseTest {
         //click on neutral element to trigger validation
         driver.findElement(By.tagName("h1")).click();
 
-        String testName = inputData.get("testCase");
+        String testName = inputData.get("testName");
         String expectedValidationMessage = inputData.get("validationMessage");
         System.out.println("Validation message:" + expectedValidationMessage);
 
+
         switch (testName){
-            case "invalidEmailNoAtSymbol",
-                    "invalidEmailNoDomain",
-                    "invalidEmailNoDomainSuffix",
-                    "invalidEmailWithSpaces",
-                    "invalidEmailNoPrefix",
-                    "invalidEmailEmpty"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_EMAIL_ID),expectedValidationMessage);
-            case "shortPassword",
-                    "longPassword",
-                    "emptyPassword"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_PASSWORD_ID),expectedValidationMessage);
-            case "noMatchingPasswords",
-                    "emptyRepeatPassword"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_CONFIRM_ID),expectedValidationMessage);
-            case "emptySecurityAnswer" -> Assert.assertEquals(getValidationMessage(driver,SECURITY_ANSWER_ID),expectedValidationMessage);
+            case "invalidEmailNoAtSymbol":
+            case "invalidEmailNoDomain":
+            case "invalidEmailNoDomainSuffix":
+            case "invalidEmailWithSpaces":
+            case "invalidEmailNoPrefix":
+            case "invalidEmailEmpty":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_EMAIL_ID),expectedValidationMessage);
+                break;
+            case "shortPassword":
+            case "longPassword":
+            case "emptyPassword":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_PASSWORD_ID),expectedValidationMessage);
+                break;
+            case "noMatchingPasswords":
+            case "emptyRepeatPassword":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_CONFIRM_ID),expectedValidationMessage);
+                break;
+            case "emptySecurityAnswer" : Assert.assertEquals(getValidationMessage(driver,SECURITY_ANSWER_ID),expectedValidationMessage);
+
         }
 
     }
@@ -127,7 +132,7 @@ public class RegisterTest extends BaseTest {
         }
 
         if (inputData.containsKey("repeatPassword")) {
-           registrationPage.enterRepeatPassword(inputData.get("repeatPassword"));
+            registrationPage.enterRepeatPassword(inputData.get("repeatPassword"));
         }
 
         if (inputData.containsKey("securityAnswer")){
@@ -145,21 +150,25 @@ public class RegisterTest extends BaseTest {
         System.out.println("Validation message:" + expectedValidationMessage);
 
         switch (testName){
-            case "invalidEmailNoAtSymbol",
-                    "invalidEmailNoDomain",
-                    "invalidEmailNoDomainSuffix",
-                    "invalidEmailWithSpaces",
-                    "invalidEmailNoPrefix",
-                    "invalidEmailEmpty"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_EMAIL_ID),expectedValidationMessage);
-            case "shortPassword",
-                    "longPassword",
-                    "emptyPassword"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_PASSWORD_ID),expectedValidationMessage);
-            case "noMatchingPasswords",
-                    "emptyRepeatPassword"
-                    -> Assert.assertEquals(getValidationMessage(driver,REGISTER_CONFIRM_ID),expectedValidationMessage);
-            case "emptySecurityAnswer" -> Assert.assertEquals(getValidationMessage(driver,SECURITY_ANSWER_ID),expectedValidationMessage);
+            case "invalidEmailNoAtSymbol":
+            case "invalidEmailNoDomain":
+            case "invalidEmailNoDomainSuffix":
+            case "invalidEmailWithSpaces":
+            case "invalidEmailNoPrefix":
+            case "invalidEmailEmpty":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_EMAIL_ID),expectedValidationMessage);
+                break;
+            case "shortPassword":
+            case "longPassword":
+            case "emptyPassword":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_PASSWORD_ID),expectedValidationMessage);
+                break;
+            case "noMatchingPasswords":
+            case "emptyRepeatPassword":
+                Assert.assertEquals(getValidationMessage(driver,REGISTER_CONFIRM_ID),expectedValidationMessage);
+                break;
+            case "emptySecurityAnswer":
+                Assert.assertEquals(getValidationMessage(driver,SECURITY_ANSWER_ID),expectedValidationMessage);
         }
 
     }
