@@ -49,7 +49,7 @@ public abstract class Room {
 
 
         if (!appliances.isEmpty()) {
-            if (!roomDetails.isEmpty()){
+            if (roomDetails.length() > 0){
                 roomDetails.append(",");
             }
 
