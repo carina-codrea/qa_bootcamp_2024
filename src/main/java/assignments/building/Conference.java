@@ -1,6 +1,10 @@
 package assignments.building;
 
 public class Conference extends Room{
+
+    public Conference() {
+    }
+
     public Conference(int furniture){
         super(furniture);
     }

@@ -19,7 +19,8 @@ public class Floor {
     }
 
     public void addRoom(Room room) {
-        if (room instanceof Conference conference) {
+        if (room instanceof Conference) {
+            Conference conference = new Conference();
 
             if (this.floorNumber == 3) {
                 conference.addAppliance("telepresence");

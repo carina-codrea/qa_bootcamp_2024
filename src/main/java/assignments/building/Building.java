@@ -15,7 +15,8 @@ public class Building {
         //find the largest conference room from the building
         for (Floor floor : floors) {
             for (Room room : floor.getRooms()) {
-                if (room instanceof Conference conferenceRoom) {
+                if (room instanceof Conference) {
+                    Conference conferenceRoom = (Conference) room;
                     // Check if this conference room is larger than the current largest
                     if (largestConferenceRoom == null || conferenceRoom.getFurniture() > largestConferenceRoom.getFurniture()) {
                         largestConferenceRoom = conferenceRoom;
@@ -32,8 +33,11 @@ public class Building {
         // add tv as appliance to the rest of the conference rooms
         for (Floor floor : floors) {
             for (Room room : floor.getRooms()) {
-                if (room instanceof Conference conferenceRoom && conferenceRoom != largestConferenceRoom) {
-                    conferenceRoom.addAppliance("TV");
+                if (room instanceof Conference) {
+                    Conference conferenceRoom = (Conference) room;
+                    if (conferenceRoom != largestConferenceRoom) {
+                        conferenceRoom.addAppliance("TV");
+                    }
                 }
             }
         }
