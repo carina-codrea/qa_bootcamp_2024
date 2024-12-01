@@ -1,6 +1,7 @@
 package juiceShop.tests;
 
 import frameworkUtils.TestUtils;
+import frameworkUtils.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +15,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup(){
-        driver = TestUtils.getDriver();
+        driver = WebDriverFactory.createWebDriver();
     }
 
     @AfterMethod
