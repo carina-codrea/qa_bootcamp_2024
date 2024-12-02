@@ -24,6 +24,7 @@ public class UserTest extends BaseTest{
         Gson gson = new Gson();
         System.out.println(gson.toJson(u));
         httpRequest.body(gson.toJson(u));
+        httpRequest.contentType("application/json");
         Response response = httpRequest.request(Method.POST, "/user");
         System.out.println(response.getBody().asString());
         System.out.println(response.getStatusCode());

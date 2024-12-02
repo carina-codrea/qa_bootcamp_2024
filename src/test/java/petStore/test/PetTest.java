@@ -1,6 +1,5 @@
 package petStore.test;
 
-
 import com.google.gson.Gson;
 import io.restassured.http.*;
 import io.restassured.path.json.JsonPath;
@@ -13,8 +12,6 @@ import org.testng.annotations.Test;
 import petStore.models.Category;
 import petStore.models.Pet;
 import petStore.models.Tag;
-import petStore.test.BaseTest;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -62,6 +59,7 @@ public class PetTest extends BaseTest {
         String jsonOutput = gson.toJson(pet);
         System.out.println(jsonOutput);
         httpRequest.body(jsonOutput);
+        httpRequest.contentType("application/json");
         Response response = httpRequest.request(Method.POST, "/pet");
         System.out.println(response.getBody().asString());
         System.out.println(response.getStatusCode());
@@ -80,4 +78,6 @@ public class PetTest extends BaseTest {
         System.out.println(response.getBody().asString());
         System.out.println(response.getStatusCode());
     }
+
+
 }
