@@ -17,6 +17,7 @@ public class RegistrationPage extends BasePage {
     private static final By REGISTER_BUTTON = By.id("registerButton");
     private static final By SECURITY_QUESTION_1 = By.cssSelector("mat-option:first-of-type>span");
     private static final By CHANGE_LANGUAGE_BLOCKER = By.cssSelector("div.mat-simple-snack-bar-content");
+    private static final By OVERLAY_ELEMENT = By.id("cdk-overlay-0");
     private static final String REGISTER_HEADER_TEXT = "User Registration";
 
     public RegistrationPage(WebDriver driver) {
@@ -57,6 +58,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public void clickOnRegisterBtn() {
+        TestUtils.waitElementToBeInvisible(driver, Duration.ofSeconds(5), OVERLAY_ELEMENT);
         getElement(REGISTER_BUTTON).click();
     }
 

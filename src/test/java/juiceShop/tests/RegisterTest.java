@@ -19,7 +19,7 @@ import static frameworkUtils.TestUtils.getValidationMessage;
 public class RegisterTest extends BaseTest {
 
     @Test(dataProvider = "loginRegisterProvider")
-    public void loginRegister01Test(HashMap<String,String> inputData) throws InterruptedException {
+    public void loginRegister01Test(HashMap<String,String> inputData) {
         driver.get(BASE_URL + "login");
 
         LoginPage loginPage = new LoginPage(driver);
