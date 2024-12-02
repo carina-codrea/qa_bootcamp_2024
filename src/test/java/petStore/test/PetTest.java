@@ -23,11 +23,11 @@ public class PetTest extends BaseTest {
     @DataProvider(name = "FindPetById")
     public Iterator<Object[]> findPetDp () {
         Collection<Object[]> dp = new ArrayList<>();
-        dp.add(new String[] {"9999", "404", ""});
+        dp.add(new String[] {"99991", "404", ""});
         dp.add(new String[] {"10", "200", "doggie"});
         return dp.iterator();
     }
-    @Test(dataProvider = "FindPetById")
+    @Test(dataProvider = "FindPetById",dependsOnMethods = "createPet2")
     public void findPetById(String petId, String responseCode, String name) {
         Response response = httpRequest.request(Method.GET, "/pet/" + petId);
         Assert.assertEquals(response.getStatusCode(), Integer.parseInt(responseCode));
