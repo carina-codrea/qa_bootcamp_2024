@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverFactory {
         public static WebDriver createWebDriver() {
+            
             WebDriver driver;
 
             String browser = System.getProperty("browser") != null
@@ -27,6 +28,7 @@ public class WebDriverFactory {
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.addArguments("--start-maximized");
                     chromeOptions.addArguments("--no-sandbox");
+                    chromeOptions.addArguments("--disable-dev-shm-usage");
                     if (isHeadless) {
                         chromeOptions.addArguments("--headless");
                     }
