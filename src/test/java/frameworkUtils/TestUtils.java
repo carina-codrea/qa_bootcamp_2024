@@ -25,7 +25,7 @@ public class TestUtils {
     public static WebDriver getDriver(){
         WebDriver driver;
 
-        String browser = getConfigProperty("browser").toLowerCase();
+        String browser = System.getProperty("browser")!= null ? System.getProperty("browser") : getConfigProperty("browser").toLowerCase();
 
         Proxy proxy = new Proxy();
         proxy.setHttpProxy("127.0.0.1:6969");

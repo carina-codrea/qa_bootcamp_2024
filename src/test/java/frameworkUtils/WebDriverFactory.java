@@ -25,6 +25,8 @@ public class WebDriverFactory {
             switch (browser) {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--start-maximized");
+                    chromeOptions.addArguments("--no-sandbox");
                     if (isHeadless) {
                         chromeOptions.addArguments("--headless");
                     }
@@ -33,6 +35,8 @@ public class WebDriverFactory {
 
                 case "firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--start-maximized");
+                    firefoxOptions.addArguments("--no-sandbox");
                     if (isHeadless) {
                         firefoxOptions.addArguments("--headless");
                     }
@@ -41,6 +45,8 @@ public class WebDriverFactory {
 
                 case "edge":
                     EdgeOptions edgeOptions = new EdgeOptions();
+                    edgeOptions.addArguments("--start-maximized");
+                    edgeOptions.addArguments("--no-sandbox");
                     if (isHeadless) {
                         edgeOptions.addArguments("--headless");
                     }
